@@ -1,17 +1,64 @@
-# Project Overview
+## Project Overview
 
-This project entails developing a contact management application with RESTful APIs using Node.js, Express.js, MongoDB, and Mongoose. Here's a brief workflow:
+### Description
 
-1. **Setting Up the Server**: Establishing an Express server to handle HTTP requests.
-  
-2. **CRUD Operations for Contacts**: Implementing routes and controllers for creating, reading, updating, and deleting contacts.
+📇 This project is a Contact Management API that allows users to manage their contacts. Users can create an account using their email and password, log in to their account, and perform various operations related to contacts. The operations include creating, updating, retrieving, and deleting contacts. Additionally, users can list all contacts and view the current user.
 
-3. **User Authentication**: Integrating user authentication using JWT tokens, including registration, login, and token verification.
+### Tech Stack
 
-4. **Database Integration**: Configuring MongoDB and defining schemas for both contacts and users.
+- **Node.js:** Server-side JavaScript runtime 🟩
+- **Express.js:** Web application framework for Node.js 🛠️
+- **JWT (JSON Web Token):** Used for securing endpoints and managing user authentication 🔐
+- **MongoDB:** NoSQL database for storing user and contact data 🗄️
+- **Mongoose:** ODM (Object Data Modeling) library for MongoDB and Node.js 📄
 
-5. **Middleware and Error Handling**: Implementing middleware for request processing and error handling throughout the application.
+### Features
 
-6. **Testing with Postman**: Utilizing Postman for testing the implemented APIs and ensuring their functionality.
+1. **User Authentication:**
+    - **Sign Up:** Users can create an account using their email and password 📝.
+    - **Login:** Users can log in to their account, which generates an access token using JWT 🔑.
+2. **Contact Management:**
+    - **Create Contact:** Authenticated users can create a new contact 📇.
+    - **Update Contact:** Authenticated users can update existing contacts 📝.
+    - **Get Contact by ID:** Authenticated users can retrieve a specific contact by its ID 🔍.
+    - **Delete Contact:** Authenticated users can delete a contact 🗑️.
+    - **List All Contacts:** Authenticated users can list all their contacts 📋.
+    - **Get Current User:** Authenticated users can retrieve their own user information 👤.
 
-This project serves as a comprehensive example of backend development, covering route handling, middleware implementation, database integration, authentication, and error handling.
+### API Endpoints
+
+1. **Authentication:**
+    - `POST /users/register`: Register a new user 📝.
+    - `POST users/login`: Authenticate a user and return a JWT access token 🔑.
+2. **Contact Management:**
+    - `POST /contacts`: Create a new contact 📇.
+    - `GET /contacts`: List all contacts 📋.
+    - `GET /contacts/:id`: Get a contact by ID 🔍.
+    - `PUT /contacts/:id`: Update a contact by ID 📝.
+    - `DELETE /contacts/:id`: Delete a contact 🗑️.
+3. **User Management:**
+    - `GET /users/current`: Retrieve the current user's information 👤.
+
+### Security
+
+- **JWT Authentication:** Protects routes and ensures only authenticated users can perform contact management operations 🔐.
+- **Password Hashing:** Ensures user passwords are stored securely 🛡️.
+
+### Database Schema
+
+1. **User:**
+    - `userName`: String (required, unique) 🆔
+    - `email`: String (required, unique) 📧
+    - `password`: String (required, hashed) 🔒
+2. **Contact:**
+    - `name`: String (required) 📝
+    - `email`: String (required) 📧
+    - `phone`: String (required) 📞
+    - `userId`: Reference to the User (required) 👤
+
+### Example Workflow
+
+1. A user signs up with their email and password 📝.
+2. The user logs in and receives a JWT access token 🔑.
+3. Using the access token, the user can create a new contact 📇, list all their contacts 📋, retrieve a contact by ID 🔍, update a contact 📝, or delete a contact 🗑️.
+4. The user can also view their own account details 👤.
